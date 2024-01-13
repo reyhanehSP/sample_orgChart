@@ -18,30 +18,13 @@ see also: DataInspector.js, DataInspector.html
 /*   #212121; /* Grey 900 */
 
 @font-face {
-  font-family: 'IRANSansX Light';
-  src: url('./fonts/IRANSansXFaNum-Light/IRANSansXFaNum-Light.eot');
-  src: url('./fonts/IRANSansXFaNum-Light/IRANSansXFaNum-Light.eot?#iefix') format('embedded-opentype'), url(../fonts/IRANSansXFaNum/IRANSansXFaNum-Light/IRANSansXFaNum-Light.otf) format('otf'), url(../fonts/IRANSansXFaNum/IRANSansXFaNum-Light/IRANSansXFaNum-Light.svg#IRANSans) format('svg'), url(../fonts/IRANSansXFaNum/IRANSansXFaNum-Light/IRANSansXFaNum-Light.woff) format('woff'), url(../fonts/IRANSansXFaNum/IRANSansXFaNum-Light/IRANSansXFaNum-Light.woff2) format('woff2'), url(../fonts/IRANSansXFaNum/IRANSansXFaNum-Light/IRANSansXFaNum-Light.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: 'IRANSansX Black';
-  font-weight: 600;
-  src: url('./fonts/IRANSansXFaNum-Black/IRANSansXFaNum-Black.eot');
-  src: url('./fonts/IRANSansXFaNum-Black/IRANSansXFaNum-Black?#iefix') format('embedded-opentype'), url(../fonts/IRANSansXFaNum/IRANSansXFaNum-Black/IRANSansXFaNum-Black.otf) format('otf'), url(../fonts/IRANSansXFaNum/IRANSansXFaNum-Black/IRANSansXFaNum-Black.svg#IRANSans) format('svg'), url(../fonts/IRANSansXFaNum/IRANSansXFaNum-Black/IRANSansXFaNum-Black.woff) format('woff'), url(../fonts/IRANSansXFaNum/IRANSansXFaNum-Black/IRANSansXFaNum-Black.woff2) format('woff2'), url(../fonts/IRANSansXFaNum/IRANSansXFaNum-Black/IRANSansXFaNum-Black.ttf) format('truetype');
-}
-
-
-
-@font-face {
-  font-family: 'IRANSansX';
+  font-family: 'iran-sans';
   font-weight: normal;
-  src: url('./fonts/IRANSansXFaNum-Regular/IRANSansXFaNum-Regular.eot');
-  src: url('./fonts/IRANSansXFaNum-Regular/IRANSansXFaNum-Regular.eot?#iefix') 
-  format('embedded-opentype')
+  src: url('../fonts/IRANSans/IRANSans.eot');
 }
 
 body{
-  font-family: 'IRANSansX';
+  font-family: 'iran-sans';
 }
 .inspector {
   display: inline-block;
@@ -49,7 +32,11 @@ body{
   background-color: #212121; /* Grey 900 */
   color: #F5F5F5; /* Grey 100 */
   cursor: default;
-}
+  direction: rtl;
+  /* position: absolute; */
+  transition: all 0.1s ease;
+  top: 130px;
+} 
 
 .inspector table {
   border-collapse: separate;
@@ -61,16 +48,16 @@ body{
 }
 
 .inspector input {
-  background-color: #424242; /* Grey 800 */
-  color: #F5F5F5; /* Grey 100 */
+  background-color: #e8dfe7; /* Grey 800 */
+  color: #141212; /* Grey 100 */
   font: bold 12px helvetica, sans-serif;
   border: 0px;
   padding: 2px;
 }
 
 .inspector input:disabled {
-  background-color: #BDBDBD; /* Grey 400 */
-  color: #616161; /* Grey 700 */
+  background-color: #e1d2d2; /* Grey 400 */
+  color: #1b1919; /* Grey 700 */
 }
 
 .inspector select {

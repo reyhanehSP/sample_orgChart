@@ -2,10 +2,10 @@ data = {
     "class": "go.TreeModel",
     "nodeDataArray": [
         {
-            "key": 1,
-            "name": "Stella Payne Diaz",
-            "title": "CEO",
-            "pic": "1.jpg"
+            "کد": 1,
+            "نام": "Stella Payne Diaz",
+            "عنوان": "CEO",
+            "تصویر": "1.jpg"
         },
         {
             "key": 2,
@@ -122,6 +122,7 @@ const $ = go.GraphObject.make;
 myDiagram =
   new go.Diagram("myDiagramDiv", // must be the ID or reference to div
     {
+     
       allowCopy: false,
       allowDelete: false,
       //initialAutoScale: go.Diagram.Uniform,
@@ -199,7 +200,7 @@ function mayWorkFor(node1, node2) {
 // This function provides a common style for most of the TextBlocks.
 // Some of these values may be overridden in a particular TextBlock.
 function textStyle() {
-  return { font: "9pt  IRANSansX", stroke: "white" };
+  return { font: "11pt IRANSansX",  stroke: "white" };
 }
 
 // This converter is used by the Picture.
@@ -211,11 +212,15 @@ function findHeadShot(pic) {
 // define the Node template
 myDiagram.nodeTemplate =
   $(go.Node, "Spot",
+  $(go.TextBlock,
+    { font: "12px iran-sans", margin: 20 },
+    new go.Binding("text", "name")),
     {
       selectionObjectName: "BODY",
       click : (e, node) => {
         focusOnNode(e, node)
     },
+  
       mouseEnter: (e, node) => {
         node.findObject("BUTTON").opacity = node.findObject("BUTTONX").opacity = 1},
       mouseLeave: (e, node) => node.findObject("BUTTON").opacity = node.findObject("BUTTONX").opacity = 0,
@@ -257,7 +262,7 @@ myDiagram.nodeTemplate =
     $(go.Panel, "Auto",
       { name: "BODY" },
       // define the node's outer shape
-      $(go.Shape, "Rectangle",
+      $(go.Shape, "RoundedRectangle",
         { name: "SHAPE", fill: "rgba(0,0,0,.8)" , stroke: 'white', strokeWidth: 3.5, portId: "" }),
       $(go.Panel, "Horizontal",
         $(go.Picture,
@@ -286,7 +291,7 @@ myDiagram.nodeTemplate =
               minSize: new go.Size(50, 16)
             },
             new go.Binding("text", "name").makeTwoWay()),
-          $(go.TextBlock, "Title: ", textStyle(),
+          $(go.TextBlock, "عنوان: ", textStyle(),
             { row: 1, column: 0 }),
           $(go.TextBlock, textStyle(),
             {
@@ -298,7 +303,7 @@ myDiagram.nodeTemplate =
             new go.Binding("text", "title").makeTwoWay()),
           $(go.TextBlock, textStyle(),
             { row: 2, column: 0 },
-            new go.Binding("text", "key", v => "ID: " + v)),
+            new go.Binding("text", "key", v => "کد: " + v)),
           $(go.TextBlock, textStyle(),  // the comments
             {
               row: 3, column: 0, columnSpan: 5,
@@ -351,13 +356,13 @@ myDiagram.scrollMargin = 450;
 myDiagram.nodeTemplate.contextMenu =
   $("ContextMenu",
     $("ContextMenuButton",
-      $(go.TextBlock, "افزودن سرگروه"),
+      $(go.TextBlock, "افزودن زیرگروه"),
       {
         click: (e, button) => addEmployee(button.part.adornedPart)
       }
     ),
     $("ContextMenuButton",
-      $(go.TextBlock, "Vacate Position"),
+      $(go.TextBlock, "موقعیت شغلی"),
       {
         click: (e, button) => {
           const node = button.part.adornedPart;
@@ -374,7 +379,7 @@ myDiagram.nodeTemplate.contextMenu =
       }
     ),
     $("ContextMenuButton",
-      $(go.TextBlock, "Remove Role"),
+      $(go.TextBlock, "حذف کاربر"),
       {
         click: (e, button) => {
           // reparent the subtree to this node's boss, then remove the node
@@ -395,7 +400,7 @@ myDiagram.nodeTemplate.contextMenu =
       }
     ),
     $("ContextMenuButton",
-      $(go.TextBlock, "Remove Department"),
+      $(go.TextBlock, "حذف کل"),
       {
         click: (e, button) => {
           // remove the whole subtree, including the node itself
